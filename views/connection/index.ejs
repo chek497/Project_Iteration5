@@ -1,0 +1,33 @@
+<!-- Rockhounders Resort Connections Page -->
+
+<%- include('../partials/header.ejs') %>
+	<main>
+		<h1>Connections Page</h1>
+        <% if(connections.length) { %>
+            <p id="connectionTitleHead">Select a connection to open</p>
+
+            <% const topics = [];
+             for (let i = 0; i < connections.length; i++) { 
+                let topic = connections[i].topic;
+                if(!topics.includes(topic)) {
+                    topics.push(topic);
+                 } 
+             } %>
+
+            <% for (let i = 0; i < topics.length; i++) { %>
+                <p class="connectionTitles"><%=topics[i]%></p>
+                <% for (let j = 0; j < connections.length; j++) { %>
+                    <% let connection = connections[j]; %>
+                    <% let topic = topics[i]; %>
+                    <% if(connection.topic == topic) { %>
+                        <section id="connectionContainer">
+                            <a href="/connections/<%= connection.id %>"><p class="eventNamesLink"><%= connection.name %></a>
+                        </section>
+                    <% } %>
+                <% } %>
+            <% } %>
+        <% } else { %>
+            <p id="noConnectionsDisplay">There are no connections to display.</p>
+        <% } %>
+	</main>
+    <%- include('../partials/footer.ejs') %>

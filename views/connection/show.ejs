@@ -1,0 +1,90 @@
+<!-- Rockhounders Resort Connection Page -->
+
+<%- include('../partials/header.ejs') %>
+	<main>
+		<h1 id="connectionPageTitle">Connection Page</h1>
+
+        <section id="connectionContainer">
+            <h2 id="connectionTitle"><%= connection.name %></h2>
+
+            <ul id="connectionsDetailList">
+                <li id="connectionOwner">Topic: <%= connection.topic %></li>
+                <li id="connectionOwner">Hosted by <%= connection.author.firstName + ' ' + connection.author.lastName%></li>
+                <li id="connectionDate"><%= connection.date.toDateString() %></li>
+                <li id="connectionTime">
+                    <%=connection.startTime%>
+                    <!--
+                    <% if (connection.startTime.includes("AM")) { %>
+                        <%= connection.startTime %>
+                    <% } else {%>
+                        <%= connection.startTime %> AM
+                    <% } %>
+                    -->
+                </li>
+                <li id="connectionTime">
+                    <%=connection.endTime%>
+                    <!--
+                    <% if (connection.endTime.includes("PM")) { %>
+                        <%= connection.endTime %>
+                    <% } else {%>
+                        <%= connection.endTime %> PM
+                    <% } %>
+                    -->
+                </li>
+                <li id="connectionLocation"><%= connection.location %></li>
+                <img src="<%= connection.image %>">
+            </ul>
+            
+            <h2 id="connectionDetailsHeader">Details</h2>
+            <p id="connectionDetails"><%= connection.details %></p>
+            
+            <p id="rsvpCounter"><%= rsvp %> people RSVP'd</p>
+            
+            <%if(locals.user) {%>
+                <%if(locals.user.id == connection.author._id) {%>
+                <table id="buttonTable">
+                    <tr>
+                        <td>
+                            <form id="updateButtonForm" action="connections.html">
+                                <button id="updateButton" type="submit"  formmethod="GET" formaction="/connections/<%=connection.id%>/edit">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form id="deleteButtonForm" action="connections.html">
+                                <button id="deleteButton" type="submit" formmethod="POST" formaction="/connections/<%=connection.id%>?_method=DELETE">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+                <%} else { %>
+                    <table id="rsvpTable">
+                        <tr>
+                            <td><p>RSVP:</p></td>
+                            <td>
+                                <form id="yesButtonForm">
+                                    <input type="hidden" name="topic" value="<%=connection.topic%>">
+                                    <input type="hidden" name="name" value="<%=connection.name%>">
+                                    <button id="yesButton" name="rsvp" value="Yes" type="submit" formmethod="POST" formaction="/connections/<%=connection.id%>/rsvp">Yes</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form id="noButtonForm">
+                                    <input type="hidden" name="topic" value="<%=connection.topic%>">
+                                    <input type="hidden" name="name" value="<%=connection.name%>">
+                                    <button id="noButton" name="rsvp" value="No" type="submit" formmethod="POST" formaction="/connections/<%=connection.id%>/rsvp">No</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form id="maybeButtonForm">
+                                    <input type="hidden" name="topic" value="<%=connection.topic%>">
+                                    <input type="hidden" name="name" value="<%=connection.name%>">
+                                    <button id="maybeButton" name="rsvp" value="Maybe" type="submit" formmethod="POST" formaction="/connections/<%=connection.id%>/rsvp">Maybe</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>   
+                <%}%>
+            <%}%>
+        </section>
+	</main>
+    <%- include('../partials/footer.ejs') %>

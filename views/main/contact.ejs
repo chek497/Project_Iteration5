@@ -1,0 +1,29 @@
+<!-- Rockhounders Resort Contact Page -->
+
+<%- include('../partials/header.ejs') %>
+	<main>
+		<h1>Contact Page</h1>
+		<p>Welcome to the Rockhounders Resort Contact Us page!</p>
+        <p>Please send us a detailed message about how we can be of service.</p>
+        <p>If you would rather communicate in another way our contact information is posted below.</p>
+        <ul>
+            <li>Email Address: rockhoundersresort@gmail.com</li>
+            <li>Phone Number: 704-499-0545</li>
+        </ul>
+        <form id="newConnectionForm">
+            <table id="newConnectionTable">
+                <tr>
+                    <td><label for="topic">Topic</label></td>
+                    <td><input id="topic" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label for="contactBody">Body</label></td>
+                    <td><textarea id="contactBody" type="text"></textarea>
+                </tr>
+            </table>
+            <a class="submitButton" href="/main">Submit Response</a>
+        </form>
+	</main>
+    <%- include('../partials/footer.ejs') %>
+
+

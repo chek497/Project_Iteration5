@@ -1,0 +1,46 @@
+<!-- Rockhounders Resort New Connection Page -->
+
+<%- include('../partials/header.ejs') %>
+	<main>
+		<h1>New Connection Page</h1>
+		<form id="newConnectionForm" action='/connections' method='POST'>
+            <table id="newConnectionTable">
+                <tr>
+                    <td><label for="topic">Topic</label></td>
+                    <td><input id="topic" type="text"  name="topic" required></td>
+                </tr>
+                <tr>
+                    <td><label for="name">Title</label></td>
+                    <td><input id="name" type="text" name="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="details">Details</label></td>
+                    <td><textarea id="details" name="details" required minlength="10"></textarea>
+                <tr>
+                    <td><label for="location">Where</label></td>
+                    <td><input id="location" type="text" name="location" required></td>
+                </tr>
+                <tr>
+                    <td><label for="date">When</label></td>
+                    <td><input id="date" type="date" name="date" required></td>
+                </tr>
+                <tr>
+                    <td><label for="startTime">Start</label></td>
+                    <td><input id="startTime" type="time" name="startTime" required></td>
+                </tr>
+                <tr>
+                    <td><label for="endTime">End</label></td>
+                    <td><input id="endTime" type="time" name="endTime" required></td>
+                </tr>                
+                <tr>
+                    <td><label for="image">Image URL</label></td>
+                    <td><input id="image" type="text" name="image" required></td>
+                </tr>
+            </table>
+
+            <button id="submitButton">Submit</button>
+        </form>
+	</main>
+    <%- include('../partials/footer.ejs') %>
+
+

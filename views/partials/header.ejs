@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Rockhounders Resort</title>
+
+	<meta charset="UTF-8">
+	<meta name="description" content="Rockhounders Resort is a new community website that you can utilize
+	to communicate with fellow rock enthusiasts and schedule rockhounding related events.">
+    <meta name="keywords" content="rockhounders, rockhound, collecting, hunt, trip, dig">
+	<meta name="author" content="Cory Sweet">
+
+	<!-- CSS and JavaScript References -->
+    <link rel="stylesheet" type="text/css" href="/css/rockhound.css">
+    <!-- <script src="javascript/rockhound.js"></script> -->
+</head>
+
+<body class="homePage">
+    <header id="topHeader">
+		<!-- For people who don't have JavaScript enabled-->
+		<noscript>This web page requires JavaScript to be enabled on your browser.</noscript>
+
+		<section id="titleLogoSection">
+			<h2 id="title">Rockhounders Resort</h2>
+        	<a href="/main">
+				<img id="logo" src="/images/RR_Logo_WhiteBackground.png" alt="A black shovel and pickaxe crossed together with the initials R and R in dark blue.">
+			</a>
+			</section>
+        
+		
+		<nav id="userNav">
+			<table id="userNavTable">
+				<tr>
+					<%if(!user) {%>
+						<td><a href='/users/new'>Sign Up</a></td>
+						<td><a href='/users/login'>Login</a></td>
+					<%} else {%>
+						<td><p>Welcome, <%=user.firstName%></p></td>
+						<td><a href='/users/profile'>Profile</a></td>
+						<td><a href='/users/logout'>Logout</a></td>
+					<%}%>
+				</tr>
+			</table>
+		</nav>
+	</header>
+
+	<nav id="generalNav">
+        <table>
+			<tr>
+				<td><a href="/main">Home</a></td>
+				<td><a href="/connections">Connections</a></td>
+				<%if(user) {%>
+				<td><a href="/connections/new">Start a New Connection</a></td>
+				<%}%>
+				<td><a href="/main/about">About</a></td>
+				<td><a href="/main/contact">Contact</a></td>
+			</tr>
+		</table>
+    </nav>
+
+	<% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+            <%});%>
+                <%}%>
+    
+                    <% if(successMessages.length > 0) {%>
+    
+                        <% successMessages.forEach(message=>{%>
+                            <div class='success'>
+                                <%=message%>
+                            </div>
+                            <%});%>
+                                <%}%>
