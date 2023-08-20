@@ -10,18 +10,18 @@
             <li>Email Address: rockhoundersresort@gmail.com</li>
             <li>Phone Number: 704-499-0545</li>
         </ul>
-        <form id="newConnectionForm">
+        <form id="newConnectionForm" onsubmit="alert('Thank you contacting us! We will get back as soon as possible.');">
             <table id="newConnectionTable">
                 <tr>
                     <td><label for="topic">Topic</label></td>
-                    <td><input id="topic" type="text"></td>
+                    <td><input id="topic" type="text" required></td>
                 </tr>
                 <tr>
                     <td><label for="contactBody">Body</label></td>
-                    <td><textarea id="contactBody" type="text"></textarea>
+                    <td><textarea id="contactBody" required></textarea>
                 </tr>
             </table>
-            <a class="submitButton" href="/main">Submit Response</a>
+            <button class="submitButton">Submit</button>
         </form>
 	</main>
     <%- include('../partials/footer.ejs') %>
